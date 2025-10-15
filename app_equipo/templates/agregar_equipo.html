@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Equipo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 400px; }
+        label { display: block; margin: 10px 0 5px; }
+        input { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { background-color: #007BFF; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Agregar Equipo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Ciudad:</label>
+        <input type="text" name="ciudad" required>
+
+        <label>Fecha de Fundación:</label>
+        <input type="date" name="fecha_fundacion" required>
+
+        <label>Entrenador:</label>
+        <input type="text" name="entrenador" required>
+
+        <label>Siglas (Máx. 10):</label>
+        <input type="text" name="siglas" maxlength="10" required>
+
+        <label>Color de Uniforme:</label>
+        <input type="text" name="color_uniforme" required>
+
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'inicio' %}">Volver al listado</a>
+</body>
+</html>

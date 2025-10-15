@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Equipo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 400px; }
+        label { display: block; margin: 10px 0 5px; }
+        input { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { background-color: #007BFF; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Editar Equipo: {{ equipo.nombre }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="{{ equipo.nombre }}" required>
+
+        <label>Ciudad:</label>
+        <input type="text" name="ciudad" value="{{ equipo.ciudad }}" required>
+
+        <label>Fecha de Fundación:</label>
+        <input type="date" name="fecha_fundacion" value="{{ equipo.fecha_fundacion|date:'Y-m-d' }}" required> 
+
+        <label>Entrenador:</label>
+        <input type="text" name="entrenador" value="{{ equipo.entrenador }}" required>
+
+        <label>Siglas (Máx. 10):</label>
+        <input type="text" name="siglas" value="{{ equipo.siglas }}" maxlength="10" required>
+
+        <label>Color de Uniforme:</label>
+        <input type="text" name="color_uniforme" value="{{ equipo.color_uniforme }}" required>
+
+        <button type="submit">Actualizar</button>
+    </form>
+    <a href="{% url 'inicio' %}">Volver al listado</a>
+</body>
+</html>
